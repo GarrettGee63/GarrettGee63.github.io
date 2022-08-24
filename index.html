@@ -2,19 +2,110 @@
 <html>
     <head>
         <title> Garrett's New Website </title>
+        <style>
+                     body {
+                background: rgb(255, 0, 0);
+                color: rgb(255, 0, 0);
+                padding: 10px;
+                font-family: arial;
+            }
+            #all-contents {
+              max-width: 800px;
+              margin: auto;
+            }
+         
+            /* navigation menu */
+            nav {
+                background: rgb(207, 253, 0);
+               margin: 0 auto;
+               margin-bottom: 20px;
+               display: flex;
+                padding: 10px;
+                border: 2px solid rgb(54, 6, 230);
+                border-radius: 25px;
+            }
+            h1 {
+                display: flex;
+                align-items: center;
+                color: rgb(255, 0, 0);
+                flex: 1;
+                margin: 0;
+            }
+            #nav-ul {
+                list-style-image: none;
+            }
+            .nav-li {
+                display: inline-block;
+                padding: 0 10px;
+            }
+            a {
+                text-decoration: none;
+                color: rgb(255, 0, 0);
+            }
+         
+            /* main container area beneath menu */
+            main {
+                background: rgb(12, 15, 0);
+                display: flex;
+                border: 2px solid rgb(54, 6, 230);
+                border-radius: 25px;
+            }
+            .sidebar {
+                margin-right: 25px;
+                padding: 10px;
+            }
+            .sidebar-img {
+                width: 200px;
+            }
+            .content {
+                flex: 1;
+                padding: 15px;
+            }
+            #interests {
+                border: 4px rgb(207, 221, 13) ridge;
+                padding: 8px;
+            }
+            h2, h3 {
+                margin: 0px;
+            }
+         </style>
     </head>
     
     <body>
-        <div> 
-            <nav> </nav>
+        <!-- All content goes here -->
+        <div id="all-contents"> 
+            <nav id="nav-ul"> 
+                <h1> Garrett's Descriptive Website </h1>
+                <ul>
+                    <li class="nav-li"> 
+                        <a href="index.html"> Home </a>
+                    </li>
+                    <li class="nav-li"> 
+                        <a href="portfolio.html"> Portfolio </a>
+                    </li>
+                </ul>
+            </nav>
             <main> 
+                
                 <!--Sidebar Section -->
-                <div> </div>
+                <div class="sidebar"> 
+                    <img class="sidebar-img" src="https://en.meming.world/images/en/thumb/b/bc/Mike_Wazowski-Sulley_Face_Swap.jpg/300px-Mike_Wazowski-Sulley_Face_Swap.jpg">
+                </div>
                 
                 <!-- Content Section-->
                 <div> 
                     <h2> Garrett </h2>
                     <p> Student at Louisiana Virtual Charter Acadamy </p> 
+                    
+                    <!-- Interests section -->
+                    <div> 
+                        <h3> Interest </h3>
+                        <ul> 
+                            <li> Learning </li>
+                            <li> Chess </li>
+                            <li> Gameing </li>
+                        </ul>
+                    </div>
                 </div>
             </main>
         </div>
