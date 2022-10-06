@@ -5,6 +5,11 @@
 	<title>Bouncing Box</title>
 	<script src="jquery.min.js"></script>
 	<style>
+		
+		body  {
+ 			background-color: #f4ffc3;
+		}
+		
 		.box {
 			width: 70px;
 			height: 70px;
@@ -14,7 +19,7 @@
 			display: block;
 			position: absolute;
 			top: 100px;
-			left: 0px;  /* <--- Change me! */
+			left: 880px;  /* <--- Change me! */
 		}
 		.board{
 			height: 100vh;
@@ -24,6 +29,7 @@
 
 </head>
 <body class="board">
+	
 	<!-- HTML for the box -->
 	<div class="box">?</div>
 
@@ -41,7 +47,10 @@
 			var boardWidth = board.width();	// the maximum X-Coordinate of the screen
 
 			// Every 50 milliseconds, call the update Function (see below)
-			setInterval(update, 50);
+			var interval = setInterval(update, 50);
+			
+			// Every time the board is clicked, call the handleBoardClick Function (see below)
+			board.on('click', handleBoardClick);
 			
 			// Every time the box is clicked, call the handleBoxClick Function (see below)
 			box.on('click', handleBoxClick);
@@ -56,21 +65,42 @@
 				box.text(newText);
 			}
 
+			function endGame() {
+    		clearInterval(interval);
+			}
+		   
 			//////////////////////////////////////////////////////////////////
 			/////////////////// YOUR CODE BELOW HERE /////////////////////////
 			//////////////////////////////////////////////////////////////////
 			
 			// TODO 2 - Variable declarations 
-			
+			var positionX = 0;
+			var points = 0;
+			var speed = 10;
+			var speed1 = 3;
+			var missClick = 0;
+			var fail = "F";
 
-			
+
 			/* 
 			This Function will be called 20 times/second. Each time it is called,
 			it should move the Box to a new location. If the box drifts off the screen
 			turn it around! 
 			*/
 			function update() {
-				
+				/* The switching postions of speed from negative to postive*/
+				/* Your Code to Increase positionX by 10 HERE*/
+				positionX = positionX + speed;
+				moveBoxTo(positionX);
+				if (positionX > boardWidth) {
+					speed = -speed;
+					speed1 = -speed1;
+				}
+				if (positionX < 0) {
+					speed = -speed;
+					speed1 = -speed1
+				}
+
 
 			};
 
@@ -79,8 +109,21 @@
 			it should increase the points total, increase the speed, and move the box to
 			the left side of the screen.
 			*/
+			
+			function handleBoardClick() {
+				missClick = missClick + 1;
+				if (missClick >= 10) {
+				changeBoxText(fail);
+				return endGame();
+				}
+			}
+			
+			
 			function handleBoxClick() {
-				
+				positionX = 0;
+				points = points + 1;
+				changeBoxText(points);
+				speed = speed + speed1;
 
 
 			};
