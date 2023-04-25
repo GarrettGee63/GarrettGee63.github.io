@@ -1,18 +1,122 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Title</title>
+    <title>Moon Pong</title>
     <!-- Load CSS files -->
     <link rel="stylesheet" type="text/css" href="index.css">
     
     <!-- Load JavaScript files -->
     <script src="jquery.min.js"></script>
     <script src="index.js"></script>
+    <style>
+      
+      body {
+        top: 0;
+        left: 0;
+        background-image: url("https://images.theconversation.com/files/379516/original/file-20210119-15-tmyvf4.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=1200.0&fit=crop");
+        background-repeat: no-repeat;
+        background-size: cover;
+
+      }
+
+      .board {
+       width: 1100px;
+       height: 915px;
+       border: 1px solid white;
+       background-color: rgb(0, 0, 0);
+        position: relative;
+       border-radius: 50%;
+       margin: auto;
+      }
+
+      .moon {
+        background-image: url("https://moon.nasa.gov/internal_resources/352");
+        background-size: 360px;
+        background-position: center;
+        width: 320.25px;
+        height: 320.25px;
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+      }
+
+      .ball1 {
+        background-color: white;
+        width: 10px;
+        height: 10px;
+        position: fixed;
+        border-radius: 50%;
+        left: 160.125px;
+        bottom: 368.2875px;
+      }
+
+      .ball2 {
+        background-color: white;
+        width: 10px;
+        height: 10px;
+        position: fixed;
+        border-radius: 50%;
+        left: 160.125px;
+        top: 368.2875px;
+      }
+
+      .paddle1 {
+        background-color: white;
+        width: 30px;
+        height: 10px;
+        position: fixed;
+        top: 50%;
+        left: -48px;
+      }
+
+      .paddle2 {
+        background-color: white;
+        width: 30px;
+        height: 10px;
+        position: fixed;
+        top: 50%;
+        right: -48px;
+      }
+
+      .start {
+        width: 120px;
+        height: 20px;
+        position: relative;
+        background-color: rgb(0, 136, 255);
+        color:rgb(0, 255, 0);
+        top: 140px;
+        left: 100px;
+        text-align: center;
+        border: 1px solid rgb(0, 0, 0);
+        border-top: 0px;
+        border-radius: 25%;
+      }
+
+    </style>
   </head>
   
   <body>
-    <div id='board'>
-      <div id='gameItem'></div>
+    <div class='board'>
+      <div class='moon'>
+        <button class="start">
+          Click to Start!
+        </button>
+        <div class="ball1"></div>
+        <div class="ball2"></div>
+        <div class="paddle1"></div>
+        <div class="paddle2"></div>
+      </div>
     </div>
+    <script>
+      (function(){
+			'use strict'
+			/* global jQuery */
+
+
+
+      })()
+    </script>
   </body>
 </html>
