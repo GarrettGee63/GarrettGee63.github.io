@@ -19,7 +19,7 @@
 
       }
 
-      .board {
+      #board {
        width: 1100px;
        height: 915px;
        border: 1px solid white;
@@ -29,7 +29,7 @@
        margin: auto;
       }
 
-      .moon {
+      #moon {
         background-image: url("https://moon.nasa.gov/internal_resources/352");
         background-size: 360px;
         background-position: center;
@@ -42,45 +42,37 @@
         border-radius: 50%;
       }
 
-      .ball1 {
+      #ball1 {
         background-color: white;
         width: 10px;
         height: 10px;
         position: fixed;
         border-radius: 50%;
-        left: 160.125px;
-        bottom: 368.2875px;
       }
 
-      .ball2 {
+      #ball2 {
         background-color: white;
         width: 10px;
         height: 10px;
         position: fixed;
         border-radius: 50%;
-        left: 160.125px;
-        top: 368.2875px;
       }
 
-      .paddle1 {
+      #paddle1 {
         background-color: white;
+        position: fixed;
         width: 30px;
         height: 10px;
-        position: fixed;
-        top: 50%;
-        left: -48px;
       }
 
-      .paddle2 {
+      #paddle2 {
         background-color: white;
+        position: fixed;
         width: 30px;
         height: 10px;
-        position: fixed;
-        top: 50%;
-        right: -48px;
       }
 
-      .start {
+      #start {
         width: 120px;
         height: 20px;
         position: relative;
@@ -98,15 +90,15 @@
   </head>
   
   <body>
-    <div class='board'>
-      <div class='moon'>
-        <button class="start">
+    <div class='board' id="board">
+      <div class='moon' id="moon">
+        <button class="start" id="start">
           Click to Start!
         </button>
-        <div class="ball1"></div>
-        <div class="ball2"></div>
-        <div class="paddle1"></div>
-        <div class="paddle2"></div>
+        <div class="ball1" id="ball1"></div>
+        <div class="ball2" id="ball2"></div>
+        <div class="paddle1" id="paddle1"></div>
+        <div class="paddle2" id="paddle2"></div>
       </div>
     </div>
     <script>
