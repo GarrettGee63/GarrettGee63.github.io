@@ -32,8 +32,8 @@ function runProgram(){
   var ball1 = ball("#ball1", 160.125, 368.2875, 1, -1, 10, 10)
   var ball2 = ball("#ball2", 160.125, -58.0375, -1, 1, 10, 10)
   var moon = {
-    x: 160.125,
-    y: 160.125,
+    x: 550,
+    y: 457.5,
   }
 
   
@@ -138,14 +138,34 @@ function runProgram(){
   }
 
   function updateBallSpeed() {
-    var angle1 = Math.atan2(moon.x - ball1.x, moon.y - ball1.y);
-    var angle2 = Math.atan2(moon.x - ball2.x, moon.y - ball2.y);
-    var distance1 = Math.sqrt(Math.pow(moon.x - ball1.x, 2) + Math.pow(moon.y - ball2.y, 2));
-    var distance2 = Math.sqrt(Math.pow(moon.x - ball2.x, 2) + Math.pow(moon.y - ball2.y, 2));
-    var forceX1 = 10 * distance1 * Math.cos(angle1);
-    var forceY1 = 10 * distance1 * Math.sin(angle1);
-    var forceX2 = 10 * distance2 * Math.cos(angle2);
-    var forceY2 = 10 * distance2 * Math.sin(angle2);
+    var c = 2;
+    var angle1 = Math.atan2(moon.y - ball1.y, moon.x - ball1.x);
+    var angle2 = Math.atan2(moon.y - ball2.y, moon.x - ball2.x);
+    var distance1 = Math.sqrt(
+      Math.pow(moon.x - ball1.x, 2) + Math.pow(moon.y - ball2.y, 2)
+    );
+    var distance2 = Math.sqrt(
+      Math.pow(moon.x - ball2.x, 2) + Math.pow(moon.y - ball2.y, 2)
+    );
+    var forceX1 = (c / distance1) * Math.cos(angle1);
+    var forceY1 = (c / distance1) * Math.sin(angle1);
+    var forceX2 = (c / distance2) * Math.cos(angle2);
+    var forceY2 = (c / distance2) * Math.sin(angle2);
+
+    if (distance1 > 200) {
+      ball1.xSpeed += forceX1;
+      ball1.ySpeed += forceY1;
+    } else {
+      ball1.xSpeed -= forceX1;
+      ball1.ySpeed -= forceY1;
+    }
+    if (distance2 > 200) {
+      ball2.xSpeed += forceX2;
+      ball2.ySpeed += forceY2;
+    } else {
+      ball2.xSpeed -= forceX2;
+      ball2.ySpeed -= forceY2;
+    }
   }
 
 
