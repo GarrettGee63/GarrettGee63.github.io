@@ -29,11 +29,16 @@ function runProgram(){
   }
   var paddle1 = paddle("#paddle1", -48, 160.125, 0, 10, 30)
   var paddle2 = paddle("#paddle2", 338.25, 160.125, 0, 10, 30)
-  var ball1 = ball("#ball1", 160.125, 368.2875, 0, 0, 10, 10)
-  var ball2 = ball("#ball2", 160.125, -58.0375, 0, 0, 10, 10)
-
+  var ball1 = ball("#ball1", 160.125, 368.2875, 1, -1, 10, 10)
+  var ball2 = ball("#ball2", 160.125, -58.0375, -1, 1, 10, 10)
+  var moon = {
+    x: 160.125,
+    y: 160.125,
+  }
 
   
+
+
   let interval;
 
   
@@ -132,6 +137,17 @@ function runProgram(){
     }
   }
 
+  function updateBallSpeed() {
+    var angle1 = Math.atan2(moon.x - ball1.x, moon.y - ball1.y);
+    var angle2 = Math.atan2(moon.x - ball2.x, moon.y - ball2.y);
+    var distance1 = Math.sqrt(Math.pow(moon.x - ball1.x, 2) + Math.pow(moon.y - ball2.y, 2));
+    var distance2 = Math.sqrt(Math.pow(moon.x - ball2.x, 2) + Math.pow(moon.y - ball2.y, 2));
+    var forceX1 = 10 * distance1 * Math.cos(angle1);
+    var forceY1 = 10 * distance1 * Math.sin(angle1);
+    var forceX2 = 10 * distance2 * Math.cos(angle2);
+    var forceY2 = 10 * distance2 * Math.sin(angle2);
+  }
+
 
 
   ////////////////////////////////////////////////////////////////////////////////
@@ -152,6 +168,11 @@ function runProgram(){
     paddle1.x += paddle1.xSpeed
     paddle2.x += paddle2.xSpeed
     // redraws balls base on speed
+    updateBallSpeed()
+    ball1.x += ball1.xSpeed
+    ball2.x += ball2.xSpeed
+    ball1.y += ball1.ySpeed
+    ball2.y += ball2.ySpeed
    }
  
    function redrawGameItem() {
