@@ -63,6 +63,7 @@ function runProgram(){
     repositionGameItem()
     redrawGameItem()
     paddlesInBounds()
+    bounceBall()
 
   }
   
@@ -159,7 +160,7 @@ function runProgram(){
       ball1.xSpeed -= forceX1;
       ball1.ySpeed -= forceY1;
     }
-    if (distance1 > 200) {
+    if (distance2 > 200) {
       ball2.xSpeed += forceX2;
       ball2.ySpeed += forceY2;
     } else {
@@ -177,13 +178,27 @@ function runProgram(){
     }
   }
 
-  function bouceBall() {
+  function bounceBall() {
     if (doCollid(ball1, paddle1 === true)) {
-      ball1.xSpeed + ball1.xSpeed * -1;
-      ball1.ySpeed + ball1.ySpeed * -1;
+      ball1.xSpeed = ball1.xSpeed * -1;
+      ball1.ySpeed = ball1.ySpeed * -1;
+      console.log("COLLID!")
     }
-    if (doCollid())
-
+    if (doCollid(ball2, paddle1) === true) {
+      ball2.xSpeed = ball2.xSpeed * -1;
+      ball2.ySpeed = ball2.ySpeed * -1;
+      console.log("COLLID!")
+    }
+    if (doCollid(ball1, paddle2 === true)) {
+      ball1.xSpeed = ball1.xSpeed * -1;
+      ball1.ySpeed = ball1.ySpeed * -1;
+      console.log("COLLID!")
+    }
+    if (doCollid(ball2, paddle2) === true) {
+      ball2.xSpeed = ball2.xSpeed * -1;
+      ball2.ySpeed = ball2.ySpeed * -1;
+      console.log("COLLID!")
+    }
   }
 
 
