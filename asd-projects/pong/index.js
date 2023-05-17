@@ -36,9 +36,6 @@ function runProgram(){
     y: 160,
   }
 
-  
-
-
   let interval;
 
   
@@ -73,6 +70,11 @@ function runProgram(){
   function handleStartClick() {
     interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
     $(".start").hide()
+    $("#ball1").css("opacity", 100);
+    $("#ball2").css("opacity", 100);
+    $("#paddle1").css("opacity", 100);
+    $("#paddle2").css("opacity", 100); 
+    $("#moon").css("animation-play-state", "running")
   }
 
 
@@ -139,11 +141,11 @@ function runProgram(){
   }
 
   function updateBallSpeed() {
-    var c = 20;
+    var c = 40;
     var angle1 = Math.atan2(moon.y - ball1.y, moon.x - ball1.x);
     var angle2 = Math.atan2(moon.y - ball2.y, moon.x - ball2.x);
     var distance1 = Math.sqrt(
-      Math.pow(moon.x - ball1.x, 2) + Math.pow(moon.y - ball2.y, 2)
+      Math.pow(moon.x - ball1.x, 2) + Math.pow(moon.y - ball1.y, 2)
     );
     var distance2 = Math.sqrt(
       Math.pow(moon.x - ball2.x, 2) + Math.pow(moon.y - ball2.y, 2)
@@ -153,14 +155,14 @@ function runProgram(){
     var forceX2 = (c / distance2) * Math.cos(angle2);
     var forceY2 = (c / distance2) * Math.sin(angle2);
 
-    if (distance1 > 200) {
+    if (distance1 > 220) {
       ball1.xSpeed += forceX1;
       ball1.ySpeed += forceY1;
     } else {
       ball1.xSpeed -= forceX1;
       ball1.ySpeed -= forceY1;
     }
-    if (distance2 > 200) {
+    if (distance2 > 220) {
       ball2.xSpeed += forceX2;
       ball2.ySpeed += forceY2;
     } else {
@@ -170,33 +172,33 @@ function runProgram(){
   }
 
   function doCollid(square1, square2) {
-    if (square1.x - square2.x < square1.width && square2.x - square1.x < square1.width && square1.y - square2.y < square2.height && square2.y - square1.y < square1.height) {
-      return true;
-    }
-    else {
-      return false;
-    }
+    return !(
+      ((square1.y + square1.height) < (square2.y)) ||
+      (square1.y > (square2.y + square2.height)) ||
+      ((square1.x + square1.width) < square2.x) ||
+      (square1.x > (square2.x + square2.width))
+    );
   }
 
   function bounceBall() {
     if (doCollid(ball1, paddle1) === true) {
-      ball1.xSpeed = ball1.xSpeed * -1;
-      ball1.ySpeed = ball1.ySpeed * -1;
+      ball1.xSpeed = ball1.xSpeed * -1.4;
+      ball1.ySpeed = ball1.ySpeed * -1.4;
       console.log("COLLID!")
     }
     if (doCollid(ball2, paddle1) === true) {
-      ball2.xSpeed = ball2.xSpeed * -1;
-      ball2.ySpeed = ball2.ySpeed * -1;
+      ball2.xSpeed = ball2.xSpeed * -1.4;
+      ball2.ySpeed = ball2.ySpeed * -1.4;
       console.log("COLLID!")
     }
     if (doCollid(ball1, paddle2) === true) {
-      ball1.xSpeed = ball1.xSpeed * -1;
-      ball1.ySpeed = ball1.ySpeed * -1;
+      ball1.xSpeed = ball1.xSpeed * -1.4;
+      ball1.ySpeed = ball1.ySpeed * -1.4;
       console.log("COLLID!")
     }
     if (doCollid(ball2, paddle2) === true) {
-      ball2.xSpeed = ball2.xSpeed * -1;
-      ball2.ySpeed = ball2.ySpeed * -1;
+      ball2.xSpeed = ball2.xSpeed * -1.4;
+      ball2.ySpeed = ball2.ySpeed * -1.4;
       console.log("COLLID!")
     }
   }
