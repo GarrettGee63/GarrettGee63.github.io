@@ -179,7 +179,7 @@ function runProgram(){
   }
 
   function bounceBall() {
-    if (doCollid(ball1, paddle1 === true)) {
+    if (doCollid(ball1, paddle1) === true) {
       ball1.xSpeed = ball1.xSpeed * -1;
       ball1.ySpeed = ball1.ySpeed * -1;
       console.log("COLLID!")
@@ -189,7 +189,7 @@ function runProgram(){
       ball2.ySpeed = ball2.ySpeed * -1;
       console.log("COLLID!")
     }
-    if (doCollid(ball1, paddle2 === true)) {
+    if (doCollid(ball1, paddle2) === true) {
       ball1.xSpeed = ball1.xSpeed * -1;
       ball1.ySpeed = ball1.ySpeed * -1;
       console.log("COLLID!")
