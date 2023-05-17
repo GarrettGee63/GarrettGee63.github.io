@@ -32,8 +32,8 @@ function runProgram(){
   var ball1 = ball("#ball1", 160.125, 368.2875, 1, -1, 10, 10)
   var ball2 = ball("#ball2", 160.125, -58.0375, -1, 1, 10, 10)
   var moon = {
-    x: 550,
-    y: 457.5,
+    x: 160,
+    y: 160,
   }
 
   
@@ -138,7 +138,7 @@ function runProgram(){
   }
 
   function updateBallSpeed() {
-    var c = 2;
+    var c = 20;
     var angle1 = Math.atan2(moon.y - ball1.y, moon.x - ball1.x);
     var angle2 = Math.atan2(moon.y - ball2.y, moon.x - ball2.x);
     var distance1 = Math.sqrt(
@@ -159,13 +159,31 @@ function runProgram(){
       ball1.xSpeed -= forceX1;
       ball1.ySpeed -= forceY1;
     }
-    if (distance2 > 200) {
+    if (distance1 > 200) {
       ball2.xSpeed += forceX2;
       ball2.ySpeed += forceY2;
     } else {
       ball2.xSpeed -= forceX2;
       ball2.ySpeed -= forceY2;
     }
+  }
+
+  function doCollid(square1, square2) {
+    if (square1.x - square2.x < square1.width && square2.x - square1.x < square1.width && square1.y - square2.y < square2.height && square2.y - square1.y < square1.height) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  function bouceBall() {
+    if (doCollid(ball1, paddle1 === true)) {
+      ball1.xSpeed + ball1.xSpeed * -1;
+      ball1.ySpeed + ball1.ySpeed * -1;
+    }
+    if (doCollid())
+
   }
 
 
